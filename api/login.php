@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$file = 'users.json';
+$file = '/tmp/users.json';
 
 // Buat file JSON kosong jika belum ada
 if (!file_exists($file)) {
