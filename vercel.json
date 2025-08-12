@@ -2,10 +2,13 @@
   "version": 2,
   "functions": {
     "api/index.php": {
-      "runtime": "https://raw.githubusercontent.com/juicyfx/vercel-php/master/dist/php-runtime.tar.gz"
+      "runtime": "vercel-php@0.6.0"
     }
   },
   "routes": [
     { "src": "/(.*)", "dest": "/api/index.php" }
-  ]
+  ],
+  "env": {
+    "NODE_VERSION": "18.x"
+  }
 }
