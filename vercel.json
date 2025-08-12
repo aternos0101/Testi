@@ -2,7 +2,8 @@
   "version": 2,
   "functions": {
     "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
+      "runtime": "vercel-php@0.6.0",
+      "maxDuration": 10
     }
   },
   "routes": [
@@ -10,6 +11,7 @@
     { "src": "^/(.*\\.php)$", "dest": "/api/$1" }
   ],
   "env": {
-    "NODE_VERSION": "18.x"
+    "NODE_VERSION": "18.x",
+    "WRITE_PATH": "/tmp"
   }
 }
