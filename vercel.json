@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "api/index.php", "use": "@vercel/php" }
-  ],
+  "functions": {
+    "api/index.php": {
+      "runtime": "https://raw.githubusercontent.com/juicyfx/vercel-php/master/dist/php-runtime.tar.gz"
+    }
+  },
   "routes": [
     { "src": "/(.*)", "dest": "/api/index.php" }
-  ],
-  "env": {
-    "NODE_VERSION": "22.x"
-  }
+  ]
 }
