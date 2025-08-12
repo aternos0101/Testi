@@ -1,17 +1,22 @@
 <?php
 session_start();
 
-$file = '/tmp/users.json';
+// Simpan di folder /tmp (writeable di Vercel)
+$file = sys_get_temp_dir() . '/users.json';
 
-// Buat file JSON kosong jika belum ada
+// Pastikan file JSON ada
 if (!file_exists($file)) {
     file_put_contents($file, json_encode([]));
 }
 
 $users = json_decode(file_get_contents($file), true);
+if (!is_array($users)) {
+    $users = [];
+}
+
 $msg = "";
 
-// Register
+// REGISTER
 if (isset($_POST['register'])) {
     $username = trim($_POST['username']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -25,7 +30,7 @@ if (isset($_POST['register'])) {
     }
 }
 
-// Login
+// LOGIN
 if (isset($_POST['login'])) {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
@@ -38,7 +43,7 @@ if (isset($_POST['login'])) {
     }
 }
 
-// Logout
+// LOGOUT
 if (isset($_GET['logout'])) {
     session_destroy();
     header("Location: login.php");
